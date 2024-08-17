@@ -1,0 +1,25 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <h2>Login</h2>
+
+  <div class="control-row">
+    <div class="control no-margin">
+      <label for="email">Email</label>
+      <input id="email" type="email" [formControl]="myForm.controls.email" />
+    </div>
+
+    <div class="control no-margin">
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" />
+    </div>
+
+    <button class="button">Login</button>
+  </div>
+
+  @if (emailInvalid) {
+  <p class="control-error">email is invalid</p>
+  } @if (passwordInvalid) { @if (addQuestionMark(myForm.controls.password)) {
+  <p class="control-error">please write question mark in password</p>
+  }@else {
+  <p class="control-error">password is invalid must be 6 character</p>
+  } }
+</form>
